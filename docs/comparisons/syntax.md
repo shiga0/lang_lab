@@ -8,7 +8,8 @@
 | Ruby | マルチ | `do/end`, `{}` | 不要 | 慣習的 |
 | Python | マルチ | インデント | 不要 | 必須 |
 | Go | 命令型 | `{}` | 自動挿入 | 慣習的 |
-| JavaScript | マルチ | `{}` | 自動挿入 | 慣習的 |
+| TypeScript | マルチ | `{}` | 自動挿入 | 慣習的 |
+| C++ | マルチ | `{}` | 必須 | 慣習的 |
 
 ## 変数宣言
 
@@ -34,6 +35,15 @@ X = 5           # 定数
 var x int = 5    // 明示的
 x := 5           // 短縮形
 const MAX = 100  // 定数
+```
+
+### C++
+```cpp
+int x = 5;                // 明示的
+auto y = 10;              // 型推論
+const int MAX = 100;      // 定数
+constexpr int SIZE = 50;  // コンパイル時定数
+static int count = 0;     // 静的変数
 ```
 
 ## 関数定義
@@ -66,6 +76,20 @@ func add(a, b int) int {
 
 // 無名関数
 add := func(a, b int) int { return a + b }
+```
+
+### C++
+```cpp
+int add(int a, int b) {
+    return a + b;
+}
+
+// ラムダ
+auto add = [](int a, int b) { return a + b; };
+
+// テンプレート関数
+template<typename T>
+T add(T a, T b) { return a + b; }
 ```
 
 ## 制御構文
@@ -101,6 +125,20 @@ puts "positive" if x > 0
 
 # 三項演算子
 sign = x > 0 ? "+" : "-"
+```
+
+**C++:**
+```cpp
+if (x > 0) {
+    cout << "positive" << endl;
+} else if (x < 0) {
+    cout << "negative" << endl;
+} else {
+    cout << "zero" << endl;
+}
+
+// 三項演算子
+string sign = x > 0 ? "+" : "-";
 ```
 
 ### ループ
@@ -142,6 +180,24 @@ end
 loop do
   break if done
 end
+```
+
+**C++:**
+```cpp
+// for
+for (int i = 0; i < 5; ++i) {
+    cout << i << endl;
+}
+
+// range-based for (C++11)
+for (auto& item : items) {
+    cout << item << endl;
+}
+
+// while
+while (x > 0) {
+    x--;
+}
 ```
 
 ## パターンマッチング
@@ -187,6 +243,26 @@ in { x:, y: }
 end
 ```
 
+### C++
+```cpp
+switch (value) {
+    case 1:
+        cout << "one" << endl;
+        break;
+    case 2:
+    case 3:
+        cout << "two or three" << endl;
+        break;
+    default:
+        cout << "other" << endl;
+}
+
+// variant + visit (C++17)
+std::visit([](auto&& arg) {
+    cout << arg << endl;
+}, variant_value);
+```
+
 ## 構造体/クラス
 
 ### Rust
@@ -227,6 +303,22 @@ class Point
 end
 ```
 
+### C++
+```cpp
+struct Point {
+    int x;
+    int y;
+
+    Point(int x, int y) : x(x), y(y) {}
+
+    double distance(const Point& other) const {
+        double dx = x - other.x;
+        double dy = y - other.y;
+        return sqrt(dx * dx + dy * dy);
+    }
+};
+```
+
 ## モジュール/名前空間
 
 ### Rust
@@ -249,6 +341,19 @@ module Math
 end
 
 include Math
+```
+
+### C++
+```cpp
+namespace math {
+    int add(int a, int b) {
+        return a + b;
+    }
+}
+
+using namespace math;
+// または
+using math::add;
 ```
 
 ## 詳細
