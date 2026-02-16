@@ -9,6 +9,7 @@
 | Go | go mod | go build | gofmt | golint/staticcheck |
 | Node.js | npm/yarn/pnpm | webpack/vite | Prettier | ESLint |
 | Python | pip/poetry | setuptools | Black | Ruff/Flake8 |
+| C++ | vcpkg/Conan | CMake/Make | clang-format | clang-tidy |
 
 ## Rust: Cargo
 
@@ -90,6 +91,32 @@ require (
 )
 ```
 
+## C++: CMake
+
+### 基本コマンド
+```bash
+cmake -B build           # ビルドディレクトリ生成
+cmake --build build      # ビルド
+cmake --build build --config Release  # リリースビルド
+ctest --test-dir build   # テスト実行
+```
+
+### CMakeLists.txt
+```cmake
+cmake_minimum_required(VERSION 3.20)
+project(my_project CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_executable(main src/main.cpp)
+
+# テスト
+enable_testing()
+add_executable(tests tests/test_main.cpp)
+add_test(NAME tests COMMAND tests)
+```
+
 ## テスト
 
 ### Rust
@@ -132,6 +159,19 @@ func TestAdd(t *testing.T) {
 }
 ```
 
+### C++ (Google Test)
+```cpp
+#include <gtest/gtest.h>
+
+TEST(CalculatorTest, Add) {
+    EXPECT_EQ(add(2, 3), 5);
+}
+
+TEST(CalculatorTest, AddNegative) {
+    EXPECT_EQ(add(-1, 1), 0);
+}
+```
+
 ## フォーマッタ
 
 ### Rust: rustfmt
@@ -151,6 +191,12 @@ rubocop -a             # 自動修正
 gofmt -w .             # フォーマット
 ```
 
+### C++: clang-format
+```bash
+clang-format -i src/*.cpp    # フォーマット
+clang-format --dry-run src/*.cpp  # チェックのみ
+```
+
 ## リンター
 
 ### Rust: Clippy
@@ -168,6 +214,12 @@ rubocop --auto-gen-config  # 設定生成
 ### Go: staticcheck
 ```bash
 staticcheck ./...
+```
+
+### C++: clang-tidy
+```bash
+clang-tidy src/*.cpp -- -std=c++20    # リント
+clang-tidy src/*.cpp --fix -- -std=c++20  # 自動修正
 ```
 
 ## ベンチマーク
@@ -200,6 +252,20 @@ func BenchmarkFibonacci(b *testing.B) {
         Fibonacci(20)
     }
 }
+```
+
+### C++ (Google Benchmark)
+```cpp
+#include <benchmark/benchmark.h>
+
+static void BM_Fibonacci(benchmark::State& state) {
+    for (auto _ : state) {
+        fibonacci(20);
+    }
+}
+BENCHMARK(BM_Fibonacci);
+
+BENCHMARK_MAIN();
 ```
 
 ## 詳細
