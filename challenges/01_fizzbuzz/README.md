@@ -35,6 +35,11 @@ FizzBuzz
 | Rust | match, 範囲, イテレータ |
 | Ruby | 条件分岐, Range, each |
 
+## 実装
+
+- [Rust](./rust/)
+- [Ruby](./ruby/)
+
 ## 発展課題
 
 1. ジェネリックに任意の範囲に対応

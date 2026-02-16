@@ -135,7 +135,7 @@ vim challenges/02_linked_list/ruby/linked_list.rb
 ## 対応言語
 
 - [x] Rust
-- [ ] Ruby
+- [x] Ruby
 - [ ] Go
 - [ ] TypeScript
 - [ ] Python
@@ -145,11 +145,19 @@ vim challenges/02_linked_list/ruby/linked_list.rb
 ## クイックスタート
 
 ```bash
-# 特定の概念を確認
+# Rust: 概念を確認
 cd concepts/type_system/rust
 cargo run
 
-# チャレンジを実行
+# Ruby: 概念を確認
+cd concepts/type_system/ruby
+ruby type_system.rb
+
+# Rust: チャレンジを実行
 cd challenges/01_fizzbuzz/rust
 cargo run
+
+# Ruby: チャレンジを実行
+cd challenges/01_fizzbuzz/ruby
+ruby fizzbuzz.rb
 ```
