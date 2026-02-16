@@ -258,3 +258,4 @@ include Math
 - [languages/go/cheatsheet.md](../../languages/go/cheatsheet.md)
 - [languages/typescript/cheatsheet.md](../../languages/typescript/cheatsheet.md)
 - [languages/python/cheatsheet.md](../../languages/python/cheatsheet.md)
+- [languages/cpp/cheatsheet.md](../../languages/cpp/cheatsheet.md)

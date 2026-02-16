@@ -26,7 +26,8 @@ lang_lab/
 │   ├── ruby/                    # Ruby
 │   ├── go/                      # Go
 │   ├── typescript/              # TypeScript
-│   └── python/                  # Python
+│   ├── python/                  # Python
+│   └── cpp/                     # C++
 │
 ├── docs/comparisons/            # 比較ドキュメント
 │
@@ -35,21 +36,21 @@ lang_lab/
 
 ## 比較表
 
-| 観点 | Rust | Ruby | Go | TypeScript | Python |
-|------|------|------|-----|------------|--------|
-| 登場年 | 2015 | 1995 | 2009 | 2012 | 1991 |
-| パラダイム | マルチ (手続き/OOP/FP) | マルチ (OOP/FP) | マルチ (手続き/並行) | マルチ (OOP/FP) | マルチ (OOP/FP/手続き) |
-| 型システム | 静的・強い | 動的・強い | 静的・強い | 静的・構造的 | 動的・強い (型ヒント) |
-| 型推論 | あり | - (動的) | あり (:=) | あり | - (動的) |
-| ジェネリクス | あり (trait bounds) | - (Duck typing) | あり (Go 1.18+) | あり | TypeVar, Generic |
-| メモリ管理 | 所有権システム | GC | 並行GC | GC (V8) | 参照カウント + GC |
-| Null安全 | Option<T> | nil (安全ではない) | nil (ゼロ値) | strictNullChecks | None (Optional) |
-| エラー処理 | Result<T, E> | 例外 | 多値戻り (error) | 例外 / Result | 例外 |
-| 並行処理 | async/await, スレッド | Thread, Fiber, Ractor | goroutine, channel | async/await, Promise | asyncio, threading, GIL |
-| メタプログラミング | マクロ (衛生的) | 強力 (eval, define_method等) | reflect, go generate | 型レベル, デコレータ | 強力 (metaclass, decorator) |
-| 実行形式 | コンパイル (ネイティブ) | インタプリタ | コンパイル (ネイティブ) | トランスパイル (JS) | インタプリタ (バイトコード) |
-| パッケージ管理 | Cargo (crates.io) | Bundler (RubyGems) | go mod (proxy.golang.org) | npm (npmjs.com) | pip (PyPI) |
-| 主な用途 | システム, CLI, WebAssembly | Web, スクリプト, DevOps | クラウド, CLI, インフラ | Web, Node.js, フルスタック | データ科学, Web, 自動化 |
+| 観点 | Rust | Ruby | Go | TypeScript | Python | C++ |
+|------|------|------|-----|------------|--------|-----|
+| 登場年 | 2015 | 1995 | 2009 | 2012 | 1991 | 1983 |
+| パラダイム | マルチ (手続き/OOP/FP) | マルチ (OOP/FP) | マルチ (手続き/並行) | マルチ (OOP/FP) | マルチ (OOP/FP/手続き) | マルチ (手続き/OOP/FP) |
+| 型システム | 静的・強い | 動的・強い | 静的・強い | 静的・構造的 | 動的・強い (型ヒント) | 静的・強い |
+| 型推論 | あり | - (動的) | あり (:=) | あり | - (動的) | あり (auto) |
+| ジェネリクス | あり (trait bounds) | - (Duck typing) | あり (Go 1.18+) | あり | TypeVar, Generic | テンプレート, concepts |
+| メモリ管理 | 所有権システム | GC | 並行GC | GC (V8) | 参照カウント + GC | 手動 + RAII + スマートポインタ |
+| Null安全 | Option<T> | nil (安全ではない) | nil (ゼロ値) | strictNullChecks | None (Optional) | optional (C++17) |
+| エラー処理 | Result<T, E> | 例外 | 多値戻り (error) | 例外 / Result | 例外 | 例外 + optional/expected |
+| 並行処理 | async/await, スレッド | Thread, Fiber, Ractor | goroutine, channel | async/await, Promise | asyncio, threading, GIL | thread, mutex, future |
+| メタプログラミング | マクロ (衛生的) | 強力 (eval, define_method等) | reflect, go generate | 型レベル, デコレータ | 強力 (metaclass, decorator) | TMP, constexpr, concepts |
+| 実行形式 | コンパイル (ネイティブ) | インタプリタ | コンパイル (ネイティブ) | トランスパイル (JS) | インタプリタ (バイトコード) | コンパイル (ネイティブ) |
+| パッケージ管理 | Cargo (crates.io) | Bundler (RubyGems) | go mod (proxy.golang.org) | npm (npmjs.com) | pip (PyPI) | vcpkg, Conan, CMake |
+| 主な用途 | システム, CLI, WebAssembly | Web, スクリプト, DevOps | クラウド, CLI, インフラ | Web, Node.js, フルスタック | データ科学, Web, 自動化 | システム, ゲーム, 組み込み |
 
 ## 学び方
 
@@ -142,6 +143,7 @@ vim challenges/02_linked_list/ruby/linked_list.rb
 - [x] Go
 - [x] TypeScript
 - [x] Python
+- [x] C++
 - [ ] Zig
 - [ ] ...
 
@@ -187,4 +189,12 @@ python type_system.py
 # Python: チャレンジを実行
 cd challenges/01_fizzbuzz/python
 python fizzbuzz.py
+
+# C++: 概念を確認
+cd concepts/type_system/cpp
+clang++ -std=c++20 type_system.cpp -o type_system && ./type_system
+
+# C++: チャレンジを実行
+cd challenges/01_fizzbuzz/cpp
+clang++ -std=c++20 fizzbuzz.cpp -o fizzbuzz && ./fizzbuzz
 ```
