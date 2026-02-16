@@ -25,7 +25,8 @@ lang_lab/
 │   ├── rust/                    # Rust
 │   ├── ruby/                    # Ruby
 │   ├── go/                      # Go
-│   └── typescript/              # TypeScript
+│   ├── typescript/              # TypeScript
+│   └── python/                  # Python
 │
 ├── docs/comparisons/            # 比較ドキュメント
 │
@@ -34,21 +35,21 @@ lang_lab/
 
 ## 比較表
 
-| 観点 | Rust | Ruby | Go | TypeScript |
-|------|------|------|-----|------------|
-| 登場年 | 2015 | 1995 | 2009 | 2012 |
-| パラダイム | マルチ (手続き/OOP/FP) | マルチ (OOP/FP) | マルチ (手続き/並行) | マルチ (OOP/FP) |
-| 型システム | 静的・強い | 動的・強い | 静的・強い | 静的・構造的 |
-| 型推論 | あり | - (動的) | あり (:=) | あり |
-| ジェネリクス | あり (trait bounds) | - (Duck typing) | あり (Go 1.18+) | あり |
-| メモリ管理 | 所有権システム | GC | 並行GC | GC (V8) |
-| Null安全 | Option<T> | nil (安全ではない) | nil (ゼロ値) | strictNullChecks |
-| エラー処理 | Result<T, E> | 例外 | 多値戻り (error) | 例外 / Result |
-| 並行処理 | async/await, スレッド | Thread, Fiber, Ractor | goroutine, channel | async/await, Promise |
-| メタプログラミング | マクロ (衛生的) | 強力 (eval, define_method等) | reflect, go generate | 型レベル, デコレータ |
-| 実行形式 | コンパイル (ネイティブ) | インタプリタ | コンパイル (ネイティブ) | トランスパイル (JS) |
-| パッケージ管理 | Cargo (crates.io) | Bundler (RubyGems) | go mod (proxy.golang.org) | npm (npmjs.com) |
-| 主な用途 | システム, CLI, WebAssembly | Web, スクリプト, DevOps | クラウド, CLI, インフラ | Web, Node.js, フルスタック |
+| 観点 | Rust | Ruby | Go | TypeScript | Python |
+|------|------|------|-----|------------|--------|
+| 登場年 | 2015 | 1995 | 2009 | 2012 | 1991 |
+| パラダイム | マルチ (手続き/OOP/FP) | マルチ (OOP/FP) | マルチ (手続き/並行) | マルチ (OOP/FP) | マルチ (OOP/FP/手続き) |
+| 型システム | 静的・強い | 動的・強い | 静的・強い | 静的・構造的 | 動的・強い (型ヒント) |
+| 型推論 | あり | - (動的) | あり (:=) | あり | - (動的) |
+| ジェネリクス | あり (trait bounds) | - (Duck typing) | あり (Go 1.18+) | あり | TypeVar, Generic |
+| メモリ管理 | 所有権システム | GC | 並行GC | GC (V8) | 参照カウント + GC |
+| Null安全 | Option<T> | nil (安全ではない) | nil (ゼロ値) | strictNullChecks | None (Optional) |
+| エラー処理 | Result<T, E> | 例外 | 多値戻り (error) | 例外 / Result | 例外 |
+| 並行処理 | async/await, スレッド | Thread, Fiber, Ractor | goroutine, channel | async/await, Promise | asyncio, threading, GIL |
+| メタプログラミング | マクロ (衛生的) | 強力 (eval, define_method等) | reflect, go generate | 型レベル, デコレータ | 強力 (metaclass, decorator) |
+| 実行形式 | コンパイル (ネイティブ) | インタプリタ | コンパイル (ネイティブ) | トランスパイル (JS) | インタプリタ (バイトコード) |
+| パッケージ管理 | Cargo (crates.io) | Bundler (RubyGems) | go mod (proxy.golang.org) | npm (npmjs.com) | pip (PyPI) |
+| 主な用途 | システム, CLI, WebAssembly | Web, スクリプト, DevOps | クラウド, CLI, インフラ | Web, Node.js, フルスタック | データ科学, Web, 自動化 |
 
 ## 学び方
 
@@ -140,7 +141,7 @@ vim challenges/02_linked_list/ruby/linked_list.rb
 - [x] Ruby
 - [x] Go
 - [x] TypeScript
-- [ ] Python
+- [x] Python
 - [ ] Zig
 - [ ] ...
 
@@ -178,4 +179,12 @@ npx tsx type_system.ts
 # TypeScript: チャレンジを実行
 cd challenges/01_fizzbuzz/typescript
 npx tsx fizzbuzz.ts
+
+# Python: 概念を確認
+cd concepts/type_system/python
+python type_system.py
+
+# Python: チャレンジを実行
+cd challenges/01_fizzbuzz/python
+python fizzbuzz.py
 ```

@@ -257,3 +257,4 @@ include Math
 - [languages/ruby/cheatsheet.md](../../languages/ruby/cheatsheet.md)
 - [languages/go/cheatsheet.md](../../languages/go/cheatsheet.md)
 - [languages/typescript/cheatsheet.md](../../languages/typescript/cheatsheet.md)
+- [languages/python/cheatsheet.md](../../languages/python/cheatsheet.md)

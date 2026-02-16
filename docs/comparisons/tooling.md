@@ -208,3 +208,4 @@ func BenchmarkFibonacci(b *testing.B) {
 - [languages/ruby/](../../languages/ruby/)
 - [languages/go/](../../languages/go/)
 - [languages/typescript/](../../languages/typescript/)
+- [languages/python/](../../languages/python/)
