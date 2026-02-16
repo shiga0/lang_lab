@@ -9,6 +9,7 @@
 | TypeScript | 静的 | 弱い | あり | あり | strict null checks |
 | Go | 静的 | 強い | 限定的 | あり (1.18+) | なし |
 | Python | 動的 | 強い | - | Type hints | None (unsafe) |
+| C++ | 静的 | 強い | あり (auto) | テンプレート/concepts | optional (C++17) |
 
 ## 静的型 vs 動的型
 
@@ -118,3 +119,9 @@ user.name  # nil だと NoMethodError
 ## 詳細
 
 - [concepts/type_system/](../../concepts/type_system/)
+- [languages/rust/](../../languages/rust/)
+- [languages/ruby/](../../languages/ruby/)
+- [languages/go/](../../languages/go/)
+- [languages/typescript/](../../languages/typescript/)
+- [languages/python/](../../languages/python/)
+- [languages/cpp/](../../languages/cpp/)

@@ -7,8 +7,9 @@
 | Rust | スレッド + async | 要ランタイム | あり | Mutex/Arc |
 | Ruby | Thread + Fiber + Ractor | Fiber | なし | GVL制限 |
 | Go | goroutine + channel | あり | なし | channel推奨 |
-| JavaScript | イベントループ | なし | あり | シングルスレッド |
+| TypeScript | イベントループ | なし | あり | シングルスレッド |
 | Python | Thread + asyncio | なし | あり | GIL制限 |
+| C++ | thread + async | なし | あり (C++20) | mutex/atomic |
 
 ## Rust
 
@@ -92,3 +93,9 @@ puts ractor.take  # "Received: hello"
 ## 詳細
 
 - [concepts/concurrency/](../../concepts/concurrency/)
+- [languages/rust/](../../languages/rust/)
+- [languages/ruby/](../../languages/ruby/)
+- [languages/go/](../../languages/go/)
+- [languages/typescript/](../../languages/typescript/)
+- [languages/python/](../../languages/python/)
+- [languages/cpp/](../../languages/cpp/)
