@@ -256,3 +256,4 @@ include Math
 - [languages/rust/cheatsheet.md](../../languages/rust/cheatsheet.md)
 - [languages/ruby/cheatsheet.md](../../languages/ruby/cheatsheet.md)
 - [languages/go/cheatsheet.md](../../languages/go/cheatsheet.md)
+- [languages/typescript/cheatsheet.md](../../languages/typescript/cheatsheet.md)
