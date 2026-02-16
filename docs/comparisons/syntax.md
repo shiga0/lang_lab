@@ -254,3 +254,5 @@ include Math
 ## 詳細
 
 - [languages/rust/cheatsheet.md](../../languages/rust/cheatsheet.md)
+- [languages/ruby/cheatsheet.md](../../languages/ruby/cheatsheet.md)
+- [languages/go/cheatsheet.md](../../languages/go/cheatsheet.md)

@@ -23,7 +23,8 @@ lang_lab/
 │
 ├── languages/                   # 言語別リファレンス
 │   ├── rust/                    # Rust
-│   └── ruby/                    # Ruby
+│   ├── ruby/                    # Ruby
+│   └── go/                      # Go
 │
 ├── docs/comparisons/            # 比較ドキュメント
 │
@@ -32,21 +33,21 @@ lang_lab/
 
 ## 比較表
 
-| 観点 | Rust | Ruby |
-|------|------|------|
-| 登場年 | 2015 | 1995 |
-| パラダイム | マルチ (手続き/OOP/FP) | マルチ (OOP/FP) |
-| 型システム | 静的・強い | 動的・強い |
-| 型推論 | あり | - (動的) |
-| ジェネリクス | あり (trait bounds) | - (Duck typing) |
-| メモリ管理 | 所有権システム | GC |
-| Null安全 | Option<T> | nil (安全ではない) |
-| エラー処理 | Result<T, E> | 例外 |
-| 並行処理 | async/await, スレッド | Thread, Fiber, Ractor |
-| メタプログラミング | マクロ (衛生的) | 強力 (eval, define_method等) |
-| 実行形式 | コンパイル (ネイティブ) | インタプリタ |
-| パッケージ管理 | Cargo (crates.io) | Bundler (RubyGems) |
-| 主な用途 | システム, CLI, WebAssembly | Web, スクリプト, DevOps |
+| 観点 | Rust | Ruby | Go |
+|------|------|------|-----|
+| 登場年 | 2015 | 1995 | 2009 |
+| パラダイム | マルチ (手続き/OOP/FP) | マルチ (OOP/FP) | マルチ (手続き/並行) |
+| 型システム | 静的・強い | 動的・強い | 静的・強い |
+| 型推論 | あり | - (動的) | あり (:=) |
+| ジェネリクス | あり (trait bounds) | - (Duck typing) | あり (Go 1.18+) |
+| メモリ管理 | 所有権システム | GC | 並行GC |
+| Null安全 | Option<T> | nil (安全ではない) | nil (ゼロ値) |
+| エラー処理 | Result<T, E> | 例外 | 多値戻り (error) |
+| 並行処理 | async/await, スレッド | Thread, Fiber, Ractor | goroutine, channel |
+| メタプログラミング | マクロ (衛生的) | 強力 (eval, define_method等) | reflect, go generate |
+| 実行形式 | コンパイル (ネイティブ) | インタプリタ | コンパイル (ネイティブ) |
+| パッケージ管理 | Cargo (crates.io) | Bundler (RubyGems) | go mod (proxy.golang.org) |
+| 主な用途 | システム, CLI, WebAssembly | Web, スクリプト, DevOps | クラウド, CLI, インフラ |
 
 ## 学び方
 
@@ -136,7 +137,7 @@ vim challenges/02_linked_list/ruby/linked_list.rb
 
 - [x] Rust
 - [x] Ruby
-- [ ] Go
+- [x] Go
 - [ ] TypeScript
 - [ ] Python
 - [ ] Zig
@@ -160,4 +161,12 @@ cargo run
 # Ruby: チャレンジを実行
 cd challenges/01_fizzbuzz/ruby
 ruby fizzbuzz.rb
+
+# Go: 概念を確認
+cd concepts/type_system/go
+go run .
+
+# Go: チャレンジを実行
+cd challenges/01_fizzbuzz/go
+go run .
 ```

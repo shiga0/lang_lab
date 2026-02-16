@@ -205,3 +205,5 @@ func BenchmarkFibonacci(b *testing.B) {
 ## 詳細
 
 - [languages/rust/](../../languages/rust/)
+- [languages/ruby/](../../languages/ruby/)
+- [languages/go/](../../languages/go/)
