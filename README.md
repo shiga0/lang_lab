@@ -48,16 +48,81 @@ lang_lab/
 | パッケージ管理 | Cargo (crates.io) | Bundler (RubyGems) |
 | 主な用途 | システム, CLI, WebAssembly | Web, スクリプト, DevOps |
 
-## 学習の進め方
+## 学び方
 
-### 1. 概念から入る
-「並行処理ってどう違う？」→ `concepts/concurrency/` を見る
+### ステップ 1: 概念を理解する（concepts/）
 
-### 2. 言語リファレンス
-「Rustの構文を思い出したい」→ `languages/rust/cheatsheet.md`
+新しい言語を学ぶとき、まず概念ごとに動作を確認する：
 
-### 3. 同じ問題を解く
-「実際に書くと違いが分かる」→ `challenges/` で同じ課題を各言語で実装
+```bash
+# 例: Rust のメモリ管理を学ぶ
+cd concepts/memory/rust
+cargo run        # 実行して動作を見る
+cat src/main.rs  # コードを読んで理解する
+```
+
+各概念ディレクトリには、その言語での実装例とコメントによる解説がある。
+
+### ステップ 2: 比較ドキュメントで俯瞰する（docs/comparisons/）
+
+複数言語の違いを比較表で確認：
+
+```bash
+cat docs/comparisons/memory-models.md
+```
+
+- Rust → 所有権システム（コンパイル時チェック）
+- Ruby → GC（Mark & Sweep）
+- Go → 並行GC（低レイテンシ）
+
+...という違いが一目でわかる。
+
+### ステップ 3: チャレンジで手を動かす（challenges/）
+
+同じ課題を違う言語で実装して、違いを体感する：
+
+```bash
+# Rust 版の連結リストを読む
+cat challenges/02_linked_list/rust/src/main.rs
+
+# 自分で Ruby 版を実装してみる
+mkdir -p challenges/02_linked_list/ruby
+vim challenges/02_linked_list/ruby/linked_list.rb
+```
+
+### ステップ 4: 新しい言語を追加する
+
+新しい言語を学ぶ最良の方法は、このリポジトリに追加すること：
+
+1. **チートシート作成**: `languages/<lang>/cheatsheet.md`
+2. **概念を実装**: `concepts/*/<lang>/` を埋めていく
+3. **チャレンジ実装**: `challenges/*/<lang>/`
+4. **比較ドキュメント更新**: `docs/comparisons/*.md` に列を追加
+
+### 推奨する学習フロー
+
+```
+新言語を学ぶとき:
+
+1. チートシートを作る
+   └─ 基礎文法を整理（変数、関数、制御構文）
+
+2. 概念を順番に実装
+   └─ type_system → memory → error_handling → concurrency → ...
+
+3. チャレンジで実践
+   └─ fizzbuzz → linked_list → http_server → ...
+
+4. 比較表を更新
+   └─ 他言語との違いを言語化して記録
+```
+
+### 学習のコツ
+
+- **実行してから読む**: まず `cargo run` で動作を見て、その後コードを読む
+- **コメントを活用**: 各実装には日本語コメントで解説がある
+- **比較で覚える**: 「Ruby ではこう書くけど、Rust ではこう」という形で記憶
+- **書いて覚える**: 読むだけでなく、自分で実装を追加する
 
 ## ドキュメント
 
