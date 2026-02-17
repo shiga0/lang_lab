@@ -4,12 +4,13 @@
 
 | 言語 | 静的/動的 | 強い/弱い | 型推論 | ジェネリクス | Null安全 |
 |------|-----------|-----------|--------|-------------|----------|
-| Rust | 静的 | 強い | あり | Trait bounds | Option<T> |
-| Ruby | 動的 | 強い | - | Duck typing | nil (unsafe) |
-| TypeScript | 静的 | 弱い | あり | あり | strict null checks |
+| C | 静的 | 弱い | なし | なし (void*) | なし (NULL) |
+| C++ | 静的 | 強い | あり (auto) | テンプレート/concepts | optional (C++17) |
 | Go | 静的 | 強い | 限定的 | あり (1.18+) | なし |
 | Python | 動的 | 強い | - | Type hints | None (unsafe) |
-| C++ | 静的 | 強い | あり (auto) | テンプレート/concepts | optional (C++17) |
+| Ruby | 動的 | 強い | - | Duck typing | nil (unsafe) |
+| Rust | 静的 | 強い | あり | Trait bounds | Option<T> |
+| TypeScript | 静的 | 弱い | あり | あり | strict null checks |
 
 ## 静的型 vs 動的型
 
@@ -119,9 +120,10 @@ user.name  # nil だと NoMethodError
 ## 詳細
 
 - [concepts/type_system/](../../concepts/type_system/)
-- [languages/rust/](../../languages/rust/)
-- [languages/ruby/](../../languages/ruby/)
-- [languages/go/](../../languages/go/)
-- [languages/typescript/](../../languages/typescript/)
-- [languages/python/](../../languages/python/)
+- [languages/c/](../../languages/c/)
 - [languages/cpp/](../../languages/cpp/)
+- [languages/go/](../../languages/go/)
+- [languages/python/](../../languages/python/)
+- [languages/ruby/](../../languages/ruby/)
+- [languages/rust/](../../languages/rust/)
+- [languages/typescript/](../../languages/typescript/)

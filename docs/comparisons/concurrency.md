@@ -4,12 +4,13 @@
 
 | 言語 | モデル | 軽量スレッド | async/await | 共有状態 |
 |------|--------|-------------|-------------|----------|
-| Rust | スレッド + async | 要ランタイム | あり | Mutex/Arc |
-| Ruby | Thread + Fiber + Ractor | Fiber | なし | GVL制限 |
-| Go | goroutine + channel | あり | なし | channel推奨 |
-| TypeScript | イベントループ | なし | あり | シングルスレッド |
-| Python | Thread + asyncio | なし | あり | GIL制限 |
+| C | pthread | なし | なし | mutex/atomic |
 | C++ | thread + async | なし | あり (C++20) | mutex/atomic |
+| Go | goroutine + channel | あり | なし | channel推奨 |
+| Python | Thread + asyncio | なし | あり | GIL制限 |
+| Ruby | Thread + Fiber + Ractor | Fiber | なし | GVL制限 |
+| Rust | スレッド + async | 要ランタイム | あり | Mutex/Arc |
+| TypeScript | イベントループ | なし | あり | シングルスレッド |
 
 ## Rust
 
@@ -93,9 +94,10 @@ puts ractor.take  # "Received: hello"
 ## 詳細
 
 - [concepts/concurrency/](../../concepts/concurrency/)
-- [languages/rust/](../../languages/rust/)
-- [languages/ruby/](../../languages/ruby/)
-- [languages/go/](../../languages/go/)
-- [languages/typescript/](../../languages/typescript/)
-- [languages/python/](../../languages/python/)
+- [languages/c/](../../languages/c/)
 - [languages/cpp/](../../languages/cpp/)
+- [languages/go/](../../languages/go/)
+- [languages/python/](../../languages/python/)
+- [languages/ruby/](../../languages/ruby/)
+- [languages/rust/](../../languages/rust/)
+- [languages/typescript/](../../languages/typescript/)

@@ -4,12 +4,13 @@
 
 | 言語 | 方式 | GC停止 | メモリ効率 | 安全性 |
 |------|------|--------|-----------|--------|
-| Rust | 所有権 | なし | 高 | コンパイル時保証 |
-| Ruby | Mark & Sweep | あり | 中 | 実行時 |
-| Go | 並行GC | 最小限 | 中 | 実行時 |
-| TypeScript | V8 GC | あり | 中 | 実行時 |
-| Python | 参照カウント + GC | あり | 中 | 実行時 |
+| C | 手動 (malloc/free) | なし | 高 | 開発者依存 |
 | C++ | 手動 + RAII + スマートポインタ | なし | 高 | 開発者依存 |
+| Go | 並行GC | 最小限 | 中 | 実行時 |
+| Python | 参照カウント + GC | あり | 中 | 実行時 |
+| Ruby | Mark & Sweep | あり | 中 | 実行時 |
+| Rust | 所有権 | なし | 高 | コンパイル時保証 |
+| TypeScript | V8 GC | あり | 中 | 実行時 |
 
 ## Rust: 所有権システム
 
@@ -63,9 +64,10 @@ end
 ## 詳細
 
 - [concepts/memory/](../../concepts/memory/)
-- [languages/rust/](../../languages/rust/)
-- [languages/ruby/](../../languages/ruby/)
-- [languages/go/](../../languages/go/)
-- [languages/typescript/](../../languages/typescript/)
-- [languages/python/](../../languages/python/)
+- [languages/c/](../../languages/c/)
 - [languages/cpp/](../../languages/cpp/)
+- [languages/go/](../../languages/go/)
+- [languages/python/](../../languages/python/)
+- [languages/ruby/](../../languages/ruby/)
+- [languages/rust/](../../languages/rust/)
+- [languages/typescript/](../../languages/typescript/)

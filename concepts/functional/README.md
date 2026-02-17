@@ -4,10 +4,13 @@
 
 | 言語 | FP サポート | イミュータブル | 高階関数 | パターンマッチ | 代数的データ型 |
 |------|------------|---------------|----------|---------------|---------------|
-| Rust | 強い | デフォルト | ○ | ○ | enum |
-| Ruby | 中程度 | .freeze | ○ (ブロック) | case when | なし |
+| C | 限定的 | const | ○ (関数ポインタ) | なし | なし |
+| C++ | 中程度 | const | ○ (ラムダ) | variant+visit | なし |
+| Go | 限定的 | なし | ○ | なし | なし |
 | Haskell | 純粋FP | デフォルト | ○ | ○ | data |
 | JavaScript | 中程度 | const (浅い) | ○ | なし | なし |
+| Ruby | 中程度 | .freeze | ○ (ブロック) | case when | なし |
+| Rust | 強い | デフォルト | ○ | ○ | enum |
 
 ## Rust の関数型機能
 
@@ -65,6 +68,33 @@ add.call(1, 2)
   .map { |x| x * 2 }
   .select { |x| x > 2 }
   .reduce(0) { |acc, x| acc + x }
+```
+
+## C の関数型機能
+
+### 関数ポインタ
+```c
+int double_it(int x) { return x * 2; }
+
+// 関数ポインタ
+int (*fn)(int) = double_it;
+fn(5);  // 10
+
+// 高階関数
+int apply(int x, int (*f)(int)) {
+    return f(x);
+}
+```
+
+### コールバック
+```c
+typedef void (*Callback)(int);
+
+void process(int* arr, int len, Callback cb) {
+    for (int i = 0; i < len; i++) {
+        cb(arr[i]);
+    }
+}
 ```
 
 ## 比較: 遅延評価

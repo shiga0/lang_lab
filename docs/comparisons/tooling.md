@@ -4,12 +4,13 @@
 
 | 言語 | パッケージマネージャ | ビルドツール | フォーマッタ | リンター |
 |------|---------------------|-------------|-------------|---------|
-| Rust | Cargo | Cargo | rustfmt | Clippy |
-| Ruby | RubyGems/Bundler | Rake | RuboCop | RuboCop |
+| C | なし (手動) | Make/CMake | clang-format | clang-tidy/cppcheck |
+| C++ | vcpkg/Conan | CMake/Make | clang-format | clang-tidy |
 | Go | go mod | go build | gofmt | golint/staticcheck |
 | Node.js | npm/yarn/pnpm | webpack/vite | Prettier | ESLint |
 | Python | pip/poetry | setuptools | Black | Ruff/Flake8 |
-| C++ | vcpkg/Conan | CMake/Make | clang-format | clang-tidy |
+| Ruby | RubyGems/Bundler | Rake | RuboCop | RuboCop |
+| Rust | Cargo | Cargo | rustfmt | Clippy |
 
 ## Rust: Cargo
 
@@ -270,9 +271,10 @@ BENCHMARK_MAIN();
 
 ## 詳細
 
-- [languages/rust/](../../languages/rust/)
-- [languages/ruby/](../../languages/ruby/)
-- [languages/go/](../../languages/go/)
-- [languages/typescript/](../../languages/typescript/)
-- [languages/python/](../../languages/python/)
+- [languages/c/](../../languages/c/)
 - [languages/cpp/](../../languages/cpp/)
+- [languages/go/](../../languages/go/)
+- [languages/python/](../../languages/python/)
+- [languages/ruby/](../../languages/ruby/)
+- [languages/rust/](../../languages/rust/)
+- [languages/typescript/](../../languages/typescript/)

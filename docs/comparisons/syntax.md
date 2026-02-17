@@ -4,12 +4,13 @@
 
 | 言語 | パラダイム | ブロック | セミコロン | インデント |
 |------|-----------|---------|-----------|-----------|
-| Rust | マルチ | `{}` | 必須 | 慣習的 |
-| Ruby | マルチ | `do/end`, `{}` | 不要 | 慣習的 |
-| Python | マルチ | インデント | 不要 | 必須 |
-| Go | 命令型 | `{}` | 自動挿入 | 慣習的 |
-| TypeScript | マルチ | `{}` | 自動挿入 | 慣習的 |
+| C | 手続き型 | `{}` | 必須 | 慣習的 |
 | C++ | マルチ | `{}` | 必須 | 慣習的 |
+| Go | 命令型 | `{}` | 自動挿入 | 慣習的 |
+| Python | マルチ | インデント | 不要 | 必須 |
+| Ruby | マルチ | `do/end`, `{}` | 不要 | 慣習的 |
+| Rust | マルチ | `{}` | 必須 | 慣習的 |
+| TypeScript | マルチ | `{}` | 自動挿入 | 慣習的 |
 
 ## 変数宣言
 
@@ -43,6 +44,14 @@ int x = 5;                // 明示的
 auto y = 10;              // 型推論
 const int MAX = 100;      // 定数
 constexpr int SIZE = 50;  // コンパイル時定数
+static int count = 0;     // 静的変数
+```
+
+### C
+```c
+int x = 5;                // 明示的
+const int MAX = 100;      // 定数 (実際はread-only変数)
+#define SIZE 50           // プリプロセッサマクロ定数
 static int count = 0;     // 静的変数
 ```
 
@@ -92,6 +101,21 @@ template<typename T>
 T add(T a, T b) { return a + b; }
 ```
 
+### C
+```c
+int add(int a, int b) {
+    return a + b;
+}
+
+// 関数ポインタ
+int (*op)(int, int) = add;
+
+// 関数ポインタを引数に取る
+int apply(int a, int b, int (*f)(int, int)) {
+    return f(a, b);
+}
+```
+
 ## 制御構文
 
 ### if/else
@@ -139,6 +163,20 @@ if (x > 0) {
 
 // 三項演算子
 string sign = x > 0 ? "+" : "-";
+```
+
+**C:**
+```c
+if (x > 0) {
+    printf("positive\n");
+} else if (x < 0) {
+    printf("negative\n");
+} else {
+    printf("zero\n");
+}
+
+// 三項演算子
+const char* sign = x > 0 ? "+" : "-";
 ```
 
 ### ループ
@@ -198,6 +236,24 @@ for (auto& item : items) {
 while (x > 0) {
     x--;
 }
+```
+
+**C:**
+```c
+// for
+for (int i = 0; i < 5; i++) {
+    printf("%d\n", i);
+}
+
+// while
+while (x > 0) {
+    x--;
+}
+
+// do-while
+do {
+    x--;
+} while (x > 0);
 ```
 
 ## パターンマッチング
@@ -263,6 +319,22 @@ std::visit([](auto&& arg) {
 }, variant_value);
 ```
 
+### C
+```c
+switch (value) {
+    case 1:
+        printf("one\n");
+        break;
+    case 2:
+    case 3:
+        printf("two or three\n");
+        break;
+    default:
+        printf("other\n");
+}
+// C にはパターンマッチング機能がない
+```
+
 ## 構造体/クラス
 
 ### Rust
@@ -319,6 +391,26 @@ struct Point {
 };
 ```
 
+### C
+```c
+typedef struct {
+    int x;
+    int y;
+} Point;
+
+// 「メソッド」は関数ポインタか普通の関数で実現
+Point point_new(int x, int y) {
+    Point p = {x, y};
+    return p;
+}
+
+double point_distance(const Point* self, const Point* other) {
+    double dx = self->x - other->x;
+    double dy = self->y - other->y;
+    return sqrt(dx * dx + dy * dy);
+}
+```
+
 ## モジュール/名前空間
 
 ### Rust
@@ -356,11 +448,28 @@ using namespace math;
 using math::add;
 ```
 
+### C
+```c
+// C には名前空間がない
+// プレフィックスで代用
+int math_add(int a, int b) {
+    return a + b;
+}
+
+// ヘッダーファイルでモジュール化
+// math.h
+#ifndef MATH_H
+#define MATH_H
+int math_add(int a, int b);
+#endif
+```
+
 ## 詳細
 
-- [languages/rust/cheatsheet.md](../../languages/rust/cheatsheet.md)
-- [languages/ruby/cheatsheet.md](../../languages/ruby/cheatsheet.md)
-- [languages/go/cheatsheet.md](../../languages/go/cheatsheet.md)
-- [languages/typescript/cheatsheet.md](../../languages/typescript/cheatsheet.md)
-- [languages/python/cheatsheet.md](../../languages/python/cheatsheet.md)
+- [languages/c/cheatsheet.md](../../languages/c/cheatsheet.md)
 - [languages/cpp/cheatsheet.md](../../languages/cpp/cheatsheet.md)
+- [languages/go/cheatsheet.md](../../languages/go/cheatsheet.md)
+- [languages/python/cheatsheet.md](../../languages/python/cheatsheet.md)
+- [languages/ruby/cheatsheet.md](../../languages/ruby/cheatsheet.md)
+- [languages/rust/cheatsheet.md](../../languages/rust/cheatsheet.md)
+- [languages/typescript/cheatsheet.md](../../languages/typescript/cheatsheet.md)

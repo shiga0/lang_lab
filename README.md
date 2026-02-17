@@ -22,12 +22,13 @@ lang_lab/
 │   └── data_structures/         # データ構造
 │
 ├── languages/                   # 言語別リファレンス
-│   ├── rust/                    # Rust
-│   ├── ruby/                    # Ruby
+│   ├── c/                       # C
+│   ├── cpp/                     # C++
 │   ├── go/                      # Go
-│   ├── typescript/              # TypeScript
 │   ├── python/                  # Python
-│   └── cpp/                     # C++
+│   ├── ruby/                    # Ruby
+│   ├── rust/                    # Rust
+│   └── typescript/              # TypeScript
 │
 ├── docs/comparisons/            # 比較ドキュメント
 │
@@ -36,21 +37,21 @@ lang_lab/
 
 ## 比較表
 
-| 観点 | Rust | Ruby | Go | TypeScript | Python | C++ |
-|------|------|------|-----|------------|--------|-----|
-| 登場年 | 2015 | 1995 | 2009 | 2012 | 1991 | 1983 |
-| パラダイム | マルチ (手続き/OOP/FP) | マルチ (OOP/FP) | マルチ (手続き/並行) | マルチ (OOP/FP) | マルチ (OOP/FP/手続き) | マルチ (手続き/OOP/FP) |
-| 型システム | 静的・強い | 動的・強い | 静的・強い | 静的・構造的 | 動的・強い (型ヒント) | 静的・強い |
-| 型推論 | あり | - (動的) | あり (:=) | あり | - (動的) | あり (auto) |
-| ジェネリクス | あり (trait bounds) | - (Duck typing) | あり (Go 1.18+) | あり | TypeVar, Generic | テンプレート, concepts |
-| メモリ管理 | 所有権システム | GC | 並行GC | GC (V8) | 参照カウント + GC | 手動 + RAII + スマートポインタ |
-| Null安全 | Option<T> | nil (安全ではない) | nil (ゼロ値) | strictNullChecks | None (Optional) | optional (C++17) |
-| エラー処理 | Result<T, E> | 例外 | 多値戻り (error) | 例外 / Result | 例外 | 例外 + optional/expected |
-| 並行処理 | async/await, スレッド | Thread, Fiber, Ractor | goroutine, channel | async/await, Promise | asyncio, threading, GIL | thread, mutex, future |
-| メタプログラミング | マクロ (衛生的) | 強力 (eval, define_method等) | reflect, go generate | 型レベル, デコレータ | 強力 (metaclass, decorator) | TMP, constexpr, concepts |
-| 実行形式 | コンパイル (ネイティブ) | インタプリタ | コンパイル (ネイティブ) | トランスパイル (JS) | インタプリタ (バイトコード) | コンパイル (ネイティブ) |
-| パッケージ管理 | Cargo (crates.io) | Bundler (RubyGems) | go mod (proxy.golang.org) | npm (npmjs.com) | pip (PyPI) | vcpkg, Conan, CMake |
-| 主な用途 | システム, CLI, WebAssembly | Web, スクリプト, DevOps | クラウド, CLI, インフラ | Web, Node.js, フルスタック | データ科学, Web, 自動化 | システム, ゲーム, 組み込み |
+| 観点 | C | C++ | Go | Python | Ruby | Rust | TypeScript |
+|------|---|-----|-----|--------|------|------|------------|
+| 登場年 | 1972 | 1983 | 2009 | 1991 | 1995 | 2015 | 2012 |
+| パラダイム | 手続き型 | マルチ (手続き/OOP/FP) | マルチ (手続き/並行) | マルチ (OOP/FP/手続き) | マルチ (OOP/FP) | マルチ (手続き/OOP/FP) | マルチ (OOP/FP) |
+| 型システム | 静的・弱い | 静的・強い | 静的・強い | 動的・強い (型ヒント) | 動的・強い | 静的・強い | 静的・構造的 |
+| 型推論 | なし | あり (auto) | あり (:=) | - (動的) | - (動的) | あり | あり |
+| ジェネリクス | なし (void*) | テンプレート, concepts | あり (Go 1.18+) | TypeVar, Generic | - (Duck typing) | あり (trait bounds) | あり |
+| メモリ管理 | 手動 (malloc/free) | 手動 + RAII + スマートポインタ | 並行GC | 参照カウント + GC | GC | 所有権システム | GC (V8) |
+| Null安全 | なし (NULL) | optional (C++17) | nil (ゼロ値) | None (Optional) | nil (安全ではない) | Option<T> | strictNullChecks |
+| エラー処理 | 戻り値 + errno | 例外 + optional/expected | 多値戻り (error) | 例外 | 例外 | Result<T, E> | 例外 / Result |
+| 並行処理 | pthread | thread, mutex, future | goroutine, channel | asyncio, threading, GIL | Thread, Fiber, Ractor | async/await, スレッド | async/await, Promise |
+| メタプログラミング | プリプロセッサマクロ | TMP, constexpr, concepts | reflect, go generate | 強力 (metaclass, decorator) | 強力 (eval, define_method等) | マクロ (衛生的) | 型レベル, デコレータ |
+| 実行形式 | コンパイル (ネイティブ) | コンパイル (ネイティブ) | コンパイル (ネイティブ) | インタプリタ (バイトコード) | インタプリタ | コンパイル (ネイティブ) | トランスパイル (JS) |
+| パッケージ管理 | なし (手動) | vcpkg, Conan, CMake | go mod (proxy.golang.org) | pip (PyPI) | Bundler (RubyGems) | Cargo (crates.io) | npm (npmjs.com) |
+| 主な用途 | OS, 組み込み, ドライバ | システム, ゲーム, 組み込み | クラウド, CLI, インフラ | データ科学, Web, 自動化 | Web, スクリプト, DevOps | システム, CLI, WebAssembly | Web, Node.js, フルスタック |
 
 ## 学び方
 
@@ -138,12 +139,13 @@ vim challenges/02_linked_list/ruby/linked_list.rb
 
 ## 対応言語
 
-- [x] Rust
-- [x] Ruby
-- [x] Go
-- [x] TypeScript
-- [x] Python
+- [x] C
 - [x] C++
+- [x] Go
+- [x] Python
+- [x] Ruby
+- [x] Rust
+- [x] TypeScript
 - [ ] Zig
 - [ ] ...
 
@@ -197,4 +199,12 @@ clang++ -std=c++20 type_system.cpp -o type_system && ./type_system
 # C++: チャレンジを実行
 cd challenges/01_fizzbuzz/cpp
 clang++ -std=c++20 fizzbuzz.cpp -o fizzbuzz && ./fizzbuzz
+
+# C: 概念を確認
+cd concepts/type_system/c
+gcc -std=c11 -Wall type_system.c -o type_system && ./type_system
+
+# C: チャレンジを実行
+cd challenges/01_fizzbuzz/c
+gcc -std=c11 -Wall fizzbuzz.c -o fizzbuzz && ./fizzbuzz
 ```
