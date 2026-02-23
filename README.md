@@ -1,11 +1,13 @@
 # lang_lab
 
+A cross-language reference repository to understand programming language design through structured comparison.
 プログラミング言語の仕組みを比較・学習するためのリファレンス集。
 
 ## 概要
 
 新しい言語を学ぶ時、既知の言語と比較することで理解が深まる。
 このリポジトリは、異なる言語の概念・構文・パラダイムを横断的に比較できる環境を提供する。
+抽象ではなく、実装を通して比較することを重視する。
 
 ## 構成
 
